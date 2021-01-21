@@ -1,112 +1,135 @@
-# stac-ecosystem
-
-Collaboration space for the broader STAC software and data ecosystem. This repo will aim to document all that is going on 
-in the broader STAC world, and also provide a roadmap to further build it out that we can all collaboratively tackle
-
-**TODO: The following is a direct copy from https://github.com/radiantearth/stac-spec/blob/v0.9.0/how-to-help.md. This 
-should be updated to reflect the current state of the ecosystem.**
-
 ## Introduction
 
-The SpatioTemporal Asset Catalog is a specification to help interoperability, but the key to achieve that goal is a community
-of like-minded collaborators who are building software and exposing data in a standard way. The specification is really 
-the result of that collaboration, and the aim is to provide a flexible base that others can extend and innovate on top of.
-If others in the community create similar functionality with their geospatial access API's then the community will hopefully
-evolve extension standards that enable increased interoperability.
+The [SpatioTemporal Asset Catalog](http://stacspec.org) is a specification to help make it easy to find geospatial 'assets'
+like satellite imagery with a common terms, JSON structures and API's. The core specifications are close to 1.0.0, which will
+mean that they should be a stable base to build upon for years to come. The goal is that the spec becomes a core building block
+in a large ecosystem of tools, that brings geospatial from a specialized niche to something incorporated in many more use cases.
+There are a core set of [tools](https://stacspec.org/) built that have been crucial to creating a solid specification, ensuring that
+its constructs are grounded in real world use. But after we reach 1.0.0 we want to ensure that all the tools are upgraded to 
+1.0.0, and that we have an 'answer' for every tool need users might have.
 
-Right now we are in the very early days of the collaboration. So while there is a core specification there is still quite a 
-few best practices to evolve and improvements to the spec that will be needed. 
+The STAC community aims to provide a complete solution, shifting our focus from the specification to the ecosystem around it.
+The goal of this document is to articulate a vision of the array of tools that are needed, so that we can jointly build and fund
+the foundation that even more innovation can spring from.
 
-## Implementations and Feedback
 
-The best way to help out with STAC is to try to implement the specification, either a [static catalog](catalog-spec/README.md), a 
-[catalog api](api-spec/README.md) or even both. This can be done by extending existing catalog software, creating new software, or 
-standing up a service end point that exposes data. Implementations using the specification as it stands will likely 
-have to make a number of decisions while building, as there is a lot that is left unspecified. The best thing to do 
-is to document those decisions, and share them with the core STAC group. Ideally make mini-specifications, but even just
-a write up with some sample output is great. 
+## Ecosystem Roadmap
 
-If you want to help out with STAC but don't have an obvious project - a piece of software, or data you want to expose - then
-read on for ideas.
+There is a ton of work to do in order to make a robust ecosystem. We attempt to group the work into various 'tiers' of priority, but
+for particular users some lower 'tier' things may be more important, and we anticipate all tiers will be built at once. But we 
+encourage dedicated efforts and funding to concentrate a bit more on the higher tier things, as they are the core things seen as
+needed to create the 'full' vision of STAC. We focus on all the non-specification things, this roadmap assumes the spec gets to
+1.0.0, and that extensions continue to evolve as needed, adding more functionality as the ecosystem demands it. 
 
-## Implementation Roadmap
+## Tier 1
 
-This section lays out a path of implementations that will be necessary to make this a truly great specification. It describes
-the hoped for ecosystem of tools and data that hopefully will come to pass. Many are things anyone could help out with an 
-implement. Some depend on particular knowledge or background, like deep involvement with an open source project. And some
-only a few people are able to do, since they depend on working for a particular company.
+*Core things that we should consider ‘must have’ for STAC ecosystem to be at a solid baseline*
 
-### Tier 1
+**Validation tools**: There should be validators in python, javascript, and in a command line interface. And ideally an online 
+validator as well (likely http://staclint.com with full spec + extension support). These should validate all parts of the spec, and all the published extensions. STAC API should have a good 
+validation tool. The results of validation should not just be 'passes' or 'fails', but it should also make recommendations, based 
+on the spec itself and its [best practices](https://github.com/radiantearth/stac-spec/blob/master/best-practices.md). The
+tools should guide people as they are creating their first STAC Catalogs, and be able to give feedback to non-compliant STAC
+catalogs they come across.
 
-These tools are seen as the bare minimum to move STAC spec to a broader release, so that it has a base line of feedback from
-real world implementations, and basic tooling to help data providers get their data out as STAC
+**Tutorials**: All the core concepts of STAC should be explained, including how to actually use various tools to accomplish STAC related tasks. Potential tutorials include:
+ - Creating a catalog (from existing formats, from COG, from a ‘new’ format)
+ - Serving a static catalog in an API (setting up a server of your own, public servers that may crawl it)
+ - Maintaining a large, updating catalog. (publishing notifications, keeping an API in sync, working with millions of records, etc)
+ - Setting up an web version (registering on http://stacindex.org, customizing and serving your own STAC Browser)
 
-**Static Catalog Creation Tooling** - At the core this should enable a user to take a directory of GeoTIFF's and create 
-a fully linked static catalog. It should autogenerate the time and geography fields, and prompt the user for additional information.
-Ideally it would evolve to start to understand common metadata formats, to populate from existing metadata (and provide links
-to the extended metadata). Command line tooling would be ideal, but could easily start requiring language specific scripting.
+**Better support forums**: Give people lots of options to ask questions / learn more. The [gitter channel](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) 
+is a good start. Could consider a slack option if it's easier for more people. Should have more of a persistant question and
+answer area, could potentiall just be a tag on http://gis.stackexchange.com
 
-**STAC Validator** - A STAC validator tool would be able to take a root document of a static catalog or catalog API and crawl
-all the links, checking for specification compliance. The core validation can leverage the JSON Schemas defined in the spec,
-adding crawling on top of that. Ideally this could be stood up as a web service, to point at online STAC instances and check
-compliance, but a command line / scripting language tool is fine to start. Would be cool if it also reported stats on the 
-catalogs validated - number of records, number of asset files, total asset data size referenced, etc.
+**10-20 public, referenceable, valuable datasets**: We should enough core data in STAC 1.0.0, that properly use all the relevant
+extensions, follow all the best practices, and ideally publish their STAC schemas, so that there is a critical mass of data
+people can just 'use'. These should all be available in STAC Browser, STAC Index, through a STAC API, etc.
 
-**Online SpatioTemporal Asset Catalogs** - Ideally there are at least 5 different catalog instances, and at least 2 each of static
-catalogs and catalog API's. These should be public services that people can hit to try out (though don't need to aim for
-high reliability - it's ok if they go down sometimes). Can be open source or proprietary software (or obviously just
-generated static files) - just the service should be public. Don't need to be the entire archives, but ideally at least
-thousands of records.
+**STAC Creation and updating tools**: [pystac](https://github.com/stac-utils/pystac) and [stactools](https://github.com/stac-utils/stactools) for python and command line interface
+should be in really solid shape. stactools should support the 10 most common data format conversions. 
+Ideally some similar javascript tools as well. 
 
-**Open Source API Implementation** - There should be some open source code that shows how a STAC API can work, that anyone
-can install and try out. Could be written in any language, and ideally there are implementations in many common languages.
+**Solid STAC API's**: Have at least one really solid open source community on a server implementation. Ideally more than one, in 
+different languages. Current options are [stac-server](https://github.com/stac-utils/stac-server) (node / javascript), [arturo stac
+api](https://github.com/arturo-ai/arturo-stac-api) (fast api / python), and [staccato](https://github.com/planetlabs/staccato) 
+(spring boot / java).
 
-**STAC Client Library** - A good first STAC client library would first enable searching and download of data from a STAC API. 
-Next steps could include crawling a static STAC and enabling querying of the crawled data (perhaps store in a geopackage), as
-well as a nice command line tool.
+**STAC Web Translator**: A tool to automatically turn a STAC into stable web pages, with interactive visualization of assets. [STAC 
+Browser](https://github.com/radiantearth/stac-browser) is the main option right now. It needs to have [better 
+URL's](https://github.com/radiantearth/stac-browser/issues/46). Some stretch goals are to have offline support / direct reading
+of COG's, and to support 3d - both display of point clouds and using a terrain background to overlay imagery (perhaps using
+deck.gl). 
 
-### Tier 2
+**QGIS STAC Plugin**: There should be full STAC search support in QGIS, with the ability select from default list of STAC catalogs, or enter your own. Plus a nice GUI to enter area, filters. And then Stream results if COG, and an option to download. A stretch
+goal would be a way to read static catalogs - perhaps crawling and downloading small catalogs (into a geopackage locally?), or
+using an online service that can crawl the static catalog.
+
+**STAC Index**: The new http://stacindex.org should be in 'production' shape, enabling users to 'manage' their entries (including
+editing and deleting), display stats on the whole network, and enable search of collections. With a stretch goal of supporting
+item level search.
+
+**GDAL/OGR support**: The leading geospatial library should have a good ability to read STAC and its assets.
+
+**Tooling to help create & maintain large catalogs**: Keeping a full, updating catalog can be challenging. We want to be sure there's
+tools to help users publish their data and keep it up to date. [Cirrus](https://github.com/cirrus-geo/cirrus) is the main tool, and
+it should be super solid.
+
+## Tier 2
+
+*This could also be called 'tier 1 plus', as it's things that ideally would be part of the core, but they are bigger chunks of work
+that aren't strictly necessary, but would be awesome to have.*
+
+
+**Visual STAC API search**: Select which servers you want to search against, or enter your own, zoom in to your area of interest, 
+  view COG results on map, etc. Would be great to have a full react app like Planet Explorer (Dev Seed started one but it didn't get 
+  super far), and also to have some lightweight version in STAC Browser.
+
+**STAC API searching widgets for js mapping toolkits**: Openlayers, leaflet, mapbox.gl, deck.gl, google maps. Have a nice answer for 
+  people 'adding' STAC into their existing app.
+
+**Deck.gl / 3d in Stac browser**: for cool interactive 3d views of any data.
+
+**STAC Browser offline support**: read STAC/COG’s locally (ideally without even needing docker, so you can get an ‘order’ from a sat provider and look at it locally with ease)
+
+**Open Submission STAC API**: One that anyone can submit a static catalog to and get a ‘free’ API.
+
+**Search Engines (Google, Bing, etc) return STAC html page results**: They crawl most public STAC data and it shows up in their results.
+
+**Online tool to upload known data plus metadata formats and output a STAC catalog**: and optionally transform to COG. Likely not a real production service, but something live that demonstrates how easy things are. Wraps stac tools and runs the right translation automatically)
+
+
+## Tier 3
+
+TODO
+
+STAC creation and API search support in the 5 most important programming languages
+STAC search support in ESRI
+STAC search support in Unfolded Studio
+
+
+## Tier 3
+
+TODO
+
+STAC creation and API search support in 10 most important programming languages
+
+## Tier 4
+
+TODO
+
+STAC creation and API support in 15+ programming languages
+
 
 **API -> Static catalog tool** - Building on top of core client and server tooling in tier one can introduce some cool value add tools.
 A client library that crawls a STAC API and can create a static STAC can be used as a 'backup' tool for an API, making a copy
 of the catalog that can't go down (ideally this would extend the spec to have a link 'rel' type that refers back to the source
 data as a [spec extension](extensions/). 
 
-**Static catalog -> API tool** - The flip of the previous tool,  a STAC API could crawl a static catalog and serve as a 
-dynamic query service on top of the core.
-
-**Javascript Search Tools** - A javascript library that can search a STAC API and enable online querying of results. Hopefully
-a core library, and then a full online implementation integrated with OpenLayers/Leaflet. Cool extensions would be integration
-with a tiled server to display COG's (or javascript reading COG's directly), and the ability to read static catalogs 
-(potentially storing data in local storage). 
-
-**HTML STAC Implementations** - Though little work has been done yet the HTML versions of STAC are super important so the catalogs
-are useful to people, not just machines. Ideally the static catalogs all have accompanying html files with interactive maps that
-lets you zoom in to cloud-optimized geotiff's (or potentially even with html files generated on the file with javascript). And
-there are also STAC API's that have html as an output in addition to json. Aiming for at least 5 html implementations.
-
-**GDAL Implementation** - As the most used geospatial library it is important that GDAL be a tool that can query STAC catalogs,
-both dynamic and static ones. Ideally GDAL could also create static catalogs as an output format. 
-
-**STAC Extension Implementations** - It is important that implementations start to create extensions to the core STAC fields,
-for things like earth observation metadata fields, derived data, mosaics, point clouds, DEM/DSM, etc. 
-
-## Tier 3
-
-**Major Public Data as static catalogs** - Ideally Landsat, Sentinel (1 & 2), NAIP, OpenAerialMap and at least a couple other public data
-sources (CBERS? NASA data?)
 
 **Vendors with STAC implementations** - Hopefully the data and software vendors also expose their major holdings & user's
 data as STAC. Planet, DigitalGlobe, Airbus, Urthecast for providers, and ENVI, Erdas, Esri, etc for data. This may be a 
 mix of static catalogs (hopefully at least for open data) and catalog API's.
-
-**Major Open Source Implementations** - Should aim for the leading open source libraries (GDAL, GeoTools) and tools (QGIS, GeoServer,
-MapServer, OpenLayers, GeoNetwork, pycsw, GeoTrellis/RasterFoundry) to develop at least plugins to talk to and/or implement STAC
-
-### Tier 4
-
-**Additional Implementations** - More STAC API's, static API generation code and client libraries, in a variety of languages
-and integrations, are always desired. 
 
 **Extensive metadata translation tools** - Static catalog generators ideally understand most any metadata format, to create
 catalogs from all the existing metadata in the world.
@@ -117,12 +140,4 @@ catalog could be syncing with just a portion of the main one, like for their are
 
 **Global STAC stats tools** - A tool that can crawl all publicly exposed STACs and present numbers on the total number of 
 records indexed in the network.
-
-**STAC Libraries in all major languages** - There should be client libraries and server bindings for all major programming
-languages. 
-
-**Cool Extensions** - STAC should be a core that others build cool advanced catalog functionality on. Things like aggregation,
-both spatial (coverage maps) and fields (total stats, histograms), offline catalogs, crossfilter querying, faceted search,
-etc.
-
 
