@@ -34,6 +34,11 @@ catalogs they come across.
 
 **Tutorials**: All the core concepts of STAC should be explained, including how to actually use various tools to accomplish STAC related tasks. Potential tutorials include:
 
+ - Creating a catalog (from existing formats, from COG, from a ‘new’ format)
+ - Serving a static catalog in an API (setting up a server of your own, public servers that may crawl it)
+ - Maintaining a large, updating catalog. (publishing notifications, keeping an API in sync, working with millions of records, etc)
+ - Setting up an web version (registering on http://stacindex.org, customizing and serving your own STAC Browser)
+
 **Better support forums**: Give people lots of options to ask questions / learn more. The [gitter channel](https://gitter.im/SpatioTemporal-Asset-Catalog/Lobby) 
 is a good start. Could consider a slack option if it's easier for more people. Should have more of a persistant question and
 answer area, could potentiall just be a tag on http://gis.stackexchange.com
