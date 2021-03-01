@@ -33,6 +33,7 @@ tools should guide people as they are creating their first STAC Catalogs, and be
 catalogs they come across.
 
 **Tutorials**: All the core concepts of STAC should be explained, including how to actually use various tools to accomplish STAC related tasks. Potential tutorials include:
+
  - Creating a catalog (from existing formats, from COG, from a ‘new’ format)
  - Serving a static catalog in an API (setting up a server of your own, public servers that may crawl it)
  - Maintaining a large, updating catalog. (publishing notifications, keeping an API in sync, working with millions of records, etc)
@@ -52,8 +53,8 @@ Ideally some similar javascript tools as well.
 
 **Solid STAC API's**: Have at least one really solid open source community on a server implementation. Ideally more than one, in 
 different languages. Current options are [stac-server](https://github.com/stac-utils/stac-server) (node / javascript), [arturo stac
-api](https://github.com/arturo-ai/arturo-stac-api) (fast api / python), [staccato](https://github.com/planetlabs/staccato) 
-(spring boot / java) and [resto](https://github.com/jjrom/resto) (php).
+api](https://github.com/arturo-ai/arturo-stac-api) (fast api / python), [franklin](https://azavea.github.io/franklin/) (scala), 
+[staccato](https://github.com/planetlabs/staccato) (spring boot / java), [resto](https://github.com/jjrom/resto) (php).
 
 **STAC Web Translator**: A tool to automatically turn a STAC into stable web pages, with interactive visualization of assets. [STAC 
 Browser](https://github.com/radiantearth/stac-browser) is the main option right now. It needs to have [better 
