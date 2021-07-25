@@ -66,9 +66,10 @@ deck.gl).
 goal would be a way to read static catalogs - perhaps crawling and downloading small catalogs (into a geopackage locally?), or
 using an online service that can crawl the static catalog.
 
-**STAC Index**: The new http://stacindex.org should be in 'production' shape, enabling users to 'manage' their entries (including
+**STAC Website and STACIndex**: The main [stacspec.org](http://stacspec.org) website should be a great introduction to STAC, and needs to be easy to contribute
+new education content to. And the new http://stacindex.org should be in 'production' shape, enabling users to 'manage' their entries (including
 editing and deleting), display stats on the whole network, and enable search of collections. With a stretch goal of supporting
-item level search.
+item level search. Ideally these two resources link to each other in a nice, consistent way.
 
 **Tooling to help create & maintain large catalogs**: Keeping a full, updating catalog can be challenging. We want to be sure there's
 tools to help users publish their data and keep it up to date. [Cirrus](https://github.com/cirrus-geo/cirrus) is the main tool, and
