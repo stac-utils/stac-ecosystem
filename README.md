@@ -70,8 +70,6 @@ using an online service that can crawl the static catalog.
 editing and deleting), display stats on the whole network, and enable search of collections. With a stretch goal of supporting
 item level search.
 
-**GDAL/OGR support**: The leading geospatial library should have a good ability to read STAC and its assets.
-
 **Tooling to help create & maintain large catalogs**: Keeping a full, updating catalog can be challenging. We want to be sure there's
 tools to help users publish their data and keep it up to date. [Cirrus](https://github.com/cirrus-geo/cirrus) is the main tool, and
 it should be super solid.
@@ -88,6 +86,8 @@ that aren't strictly necessary, but would be awesome to have.*
 
 **STAC API searching widgets for js mapping toolkits**: Openlayers, leaflet, mapbox.gl, deck.gl, google maps. Have a nice answer for 
   people 'adding' STAC into their existing app.
+
+**GDAL/OGR support**: The leading geospatial library should have a good ability to read STAC and its assets.
 
 **Deck.gl / 3d in Stac browser**: for cool interactive 3d views of any data.
 
